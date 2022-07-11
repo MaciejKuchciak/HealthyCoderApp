@@ -69,7 +69,6 @@ class BMICalculatorTest {
                 () -> assertEquals(1.82, coderWorstBMI.getHeight()),
                 () -> assertEquals(98.0, coderWorstBMI.getWeight())
         );
-
     }
 
     @Test
@@ -83,8 +82,23 @@ class BMICalculatorTest {
 
 //        then
         assertNull(coderWorstBMI);
+    }
 
+    @Test
+    void should_ReturnCorrectBMIScoreArray_When_CoderListNotEmpty(){
 
+//        given
+        List<Coder> coders = new ArrayList<>();
+        coders.add(new Coder(1.80, 60.0));
+        coders.add(new Coder(1.82, 98.0));
+        coders.add(new Coder(1.82, 64.7));
+        double[] expected = {18.52, 29.59, 19.53};
+
+//        when
+        double[] bmiScores = BMICalculator.getBMIScores(coders);
+
+//        then
+        assertArrayEquals(expected, bmiScores);
     }
 
 }
