@@ -1,6 +1,8 @@
 package com.healthycoderapp;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.DisabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -30,6 +32,7 @@ class BMICalculatorTest {
     class IsDiedRecommendedTests {
 
         @Test
+        @DisabledOnOs(OS.WINDOWS)
         void should_ReturnTrue_When_DietRecommended(){
 
 //      given
@@ -45,6 +48,7 @@ class BMICalculatorTest {
 
         @ParameterizedTest(name = "weight={0}, height={1}")
         @CsvFileSource(resources = "/diet-recommended-input-data.csv", numLinesToSkip = 1)
+        @DisabledOnOs(OS.MAC)
         void should_ReturnTrue_When_DietRecommended(Double coderWeight, Double coderHeight){
 
 //      given
