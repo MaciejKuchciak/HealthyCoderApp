@@ -128,6 +128,7 @@ class BMICalculatorTest {
         }
 
         @Test
+        @Disabled
         void should_ReturnNullWorstBMICoder_When_CoderListEmpty(){
 
 //        given
